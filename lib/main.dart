@@ -5,8 +5,8 @@ import 'package:washalert/homepage.dart';
 import 'loginpage.dart';
 
 void main() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.clear();
+  /* SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.clear(); */
   WidgetsFlutterBinding.ensureInitialized();
   AuthProvider authProvider = AuthProvider();
   await authProvider.getLoginStatus();
@@ -60,7 +60,10 @@ class AuthChecker extends StatelessWidget {
           future: authProvider.getLoginStatus(),
           builder: (context, snapshot) {
             if (authProvider.isLoggedIn) {
-              return HomePage();
+              return ChangeNotifierProvider(
+                create: (context) => ListModel(),
+                child: HomePage(),
+              );
             } else {
               return LoginPage();
             }

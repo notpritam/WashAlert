@@ -8,29 +8,42 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
     return Center(
       child: Column(
         children: [
-          Text("Welcome", style: TextStyle(fontSize: 32)),
-          SizedBox(
-            height: 100,
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Text("Welcome", style: TextStyle(fontSize: 32)),
           ),
-          TextField(
-            decoration: const InputDecoration(hintText: 'Name'),
+          Spacer(flex: 1),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width / 15),
+            child: TextField(
+              decoration: const InputDecoration(hintText: 'Name'),
+            ),
           ),
-          TextField(
-            decoration: const InputDecoration(hintText: 'Phone No.'),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width / 15),
+            child: TextField(
+              decoration: const InputDecoration(hintText: 'Phone No.'),
+            ),
           ),
-          ElevatedButton(
-              onPressed: () {
-                authProvider.login();
-                MaterialPageRoute(builder: ((context) {
-                  return HomePage();
-                }));
-              },
-              child: Text("Login"))
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  authProvider.login();
+                  MaterialPageRoute(builder: ((context) {
+                    return HomePage();
+                  }));
+                },
+                child: Text("Login")),
+          ),
+          Spacer(flex: 2)
         ],
       ),
     );
