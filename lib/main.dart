@@ -12,13 +12,13 @@ void main() async {
   await authProvider.getLoginStatus();
   runApp(ChangeNotifierProvider(
       create: (context) => AuthProvider(),
-      child: MaterialApp(
+      child: const MaterialApp(
         title: 'Flutter Demo',
         /* theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ), */
-        home: const AuthChecker(),
+        home: AuthChecker(),
       )));
 }
 
@@ -60,12 +60,17 @@ class AuthChecker extends StatelessWidget {
           future: authProvider.getLoginStatus(),
           builder: (context, snapshot) {
             if (authProvider.isLoggedIn) {
-              return ChangeNotifierProvider(
-                create: (context) => ListModel(),
-                child: HomePage(),
+              return MultiProvider(
+                providers: [
+                  ChangeNotifierProvider(create: (context) => ListModel()),
+                  ChangeNotifierProvider(
+                    create: (context) => TimerModel(),
+                  )
+                ],
+                child: const HomePage(),
               );
             } else {
-              return LoginPage();
+              return const LoginPage();
             }
           },
         ));
