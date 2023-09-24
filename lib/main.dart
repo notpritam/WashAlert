@@ -3,10 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:washalert/homepage.dart';
 import 'loginpage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   /* SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.clear(); */
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   WidgetsFlutterBinding.ensureInitialized();
   AuthProvider authProvider = AuthProvider();
   await authProvider.getLoginStatus();

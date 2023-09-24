@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538838446367",
+    "project_id": "washalert-a94b7",
+    "storage_bucket": "washalert-a94b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538838446367:android:c0988c00a14d0dc839c02a",
+        "android_client_info": {
+          "package_name": "com.example.washalert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzER3D4-1b4uCYJr_21_Nm6ZnEJ2F7GFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
